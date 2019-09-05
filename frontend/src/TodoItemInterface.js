@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import {ApiContext} from './etc/APIContext';
 
 import EditTodoItem from './EditItem/EditTodoItem';
-import TodoItemInterface from './TodoItemInterface';
 
+import {ApiContext} from './etc/APIContext';
 
-class TodoItem extends Component {
+class TodoItemInterface extends Component {
   constructor(props) {
     super(props);
 
@@ -47,12 +46,15 @@ class TodoItem extends Component {
     this.props.handleUpdate();
   }
 
+  componentDidMount() {
+    this.setState({completed: this.props.item.completed});
+  }
+
   render() {
     const {id, title, description, completed} = this.props.item;
     return (
       <div className='todo-item'>
         {this.state.editing? <EditTodoItem/>: <span>HALLO</span>}
-        {/* {this.state.editing? <span>HALLO</span>:<EditTodoItem/>} */}
         <input
           type='checkbox'
           checked={completed}
@@ -64,12 +66,9 @@ class TodoItem extends Component {
         <button onClick={this.itemDelete}> Delete </button>
       </div>
     );
-    // return (
-    //   <TodoItemInterface item={this.props.item}/>
-    // );
   }
 }
 
-TodoItem.contextType = ApiContext;
+TodoItemInterface.contextType = ApiContext;
 
-export default TodoItem;
+export default TodoItemInterface;
