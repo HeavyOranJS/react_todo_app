@@ -29,6 +29,7 @@ class AddItemInterface extends Component {
     await fetch(this.context.api, {headers, method: 'POST', body});
 
     this.props.handleUpdate();
+    this.props.handleCancel();
   }
 
   render() {

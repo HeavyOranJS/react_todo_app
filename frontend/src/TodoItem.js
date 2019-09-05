@@ -48,25 +48,23 @@ class TodoItem extends Component {
   }
 
   render() {
-    const {id, title, description, completed} = this.props.item;
+    // const {id, title, description, completed} = this.props.item;
     return (
       <div className='todo-item'>
-        {this.state.editing? <EditTodoItem/>: <span>HALLO</span>}
-        {/* {this.state.editing? <span>HALLO</span>:<EditTodoItem/>} */}
-        <input
-          type='checkbox'
-          checked={completed}
-          onChange={this.toggleCompleted}/>
-        {title} - {description}
-        <button onClick={()=>this.setState({editing: !this.state.editing})}>
-            Edit
-        </button>
-        <button onClick={this.itemDelete}> Delete </button>
+        {
+            this.state.editing?
+            <EditTodoItem
+              item = {this.props.item}
+              handleCancel={()=>this.setState({editing: !this.state.editing})}
+              handleUpdate={this.props.handleUpdate}
+            />:
+            <TodoItemInterface
+              item={this.props.item}
+              handleEdit={()=>this.setState({editing: !this.state.editing})}
+              handleUpdate={this.props.handleUpdate}/>
+        }
       </div>
     );
-    // return (
-    //   <TodoItemInterface item={this.props.item}/>
-    // );
   }
 }
 

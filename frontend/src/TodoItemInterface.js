@@ -1,7 +1,4 @@
 import React, {Component} from 'react';
-
-import EditTodoItem from './EditItem/EditTodoItem';
-
 import {ApiContext} from './etc/APIContext';
 
 class TodoItemInterface extends Component {
@@ -37,30 +34,24 @@ class TodoItemInterface extends Component {
       'completed': !completed,
     });
 
-    const res = await fetch(
+    await fetch(
         this.context.api + id + '/',
         {headers, method: 'PUT', body}
     );
 
-    console.log(res);
     this.props.handleUpdate();
-  }
-
-  componentDidMount() {
-    this.setState({completed: this.props.item.completed});
   }
 
   render() {
     const {id, title, description, completed} = this.props.item;
     return (
       <div className='todo-item'>
-        {this.state.editing? <EditTodoItem/>: <span>HALLO</span>}
         <input
           type='checkbox'
           checked={completed}
           onChange={this.toggleCompleted}/>
         {title} - {description}
-        <button onClick={()=>this.setState({editing: !this.state.editing})}>
+        <button onClick={this.props.handleEdit}>
             Edit
         </button>
         <button onClick={this.itemDelete}> Delete </button>

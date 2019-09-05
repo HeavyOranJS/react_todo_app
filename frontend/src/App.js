@@ -46,7 +46,6 @@ class TodoList extends Component {
         {todoItems}
         <AddTodoItem
           handleUpdate={this.handleUpdate}
-          api_adress={this.context.api}
         />
       </div>
     );

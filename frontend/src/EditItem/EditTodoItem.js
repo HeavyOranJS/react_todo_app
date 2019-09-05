@@ -13,20 +13,12 @@ class EditTodoItem extends Component {
   }
 
   render() {
-    const editItemButton = (
-      <button onClick={() => this.setState({editing: !this.state.editing})}>
-          Edit
-      </button>
-    );
     return (
       <div>
-        {this.state.editing?
-                <EditItemInterface
-                  handleCancel={() => this.setState(
-                      {editing: !this.state.editing}
-                  )}
-                  handleUpdate={this.props.handleUpdate}/>:
-                editItemButton}
+        <EditItemInterface
+          item={this.props.item}
+          handleCancel={this.props.handleCancel}
+          handleUpdate={this.props.handleUpdate}/>
       </div>
     );
   }
