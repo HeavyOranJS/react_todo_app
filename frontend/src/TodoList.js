@@ -38,8 +38,9 @@ class TodoList extends Component {
 
   render() {
     const todoItems = this.props.todos.map(
-        (item) => <TodoItem
+        (item, index) => <TodoItem
           key={item.id}
+          index={index}
           item={item}
           handleUpdate={this.handleUpdate}
         />

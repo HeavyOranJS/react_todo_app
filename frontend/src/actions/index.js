@@ -1,3 +1,3 @@
-import {fetchTodos, addTodo} from './todos';
+import {fetchTodos, addTodo, editTodo, deleteTodo} from './todos';
 
-export default {fetchTodos, addTodo};
+export default {fetchTodos, addTodo, editTodo, deleteTodo};

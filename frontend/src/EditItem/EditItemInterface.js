@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+
 import '../App.css';
+import todos from '../actions';
 
 import {ApiContext} from '../etc/APIContext';
 
@@ -15,24 +18,32 @@ class EditItemInterface extends Component {
     this.editItem = this.editItem.bind(this);
   }
 
-  async editItem() {
-    const current = this.props.item;
-    const headers = {'Content-Type': 'application/json'};
-    const body = JSON.stringify(
-        {
-          'id': current.id,
-          'title': this.state.title,
-          'description': this.state.description,
-          'completed': current.completed,
-        }
-    );
+  editItem(index) {
+    // const current = this.props.item;
+    // const headers = {'Content-Type': 'application/json'};
+    // const body = JSON.stringify(
+    //     {
+    //       'id': current.id,
+    //       'title': this.state.title,
+    //       'description': this.state.description,
+    //       'completed': current.completed,
+    //     }
+    // );
 
-    await fetch(
-        this.context.api + current.id + '/',
-        {headers, method: 'PUT', body}
-    );
-
-    this.props.handleUpdate();
+    // await fetch(
+    //     this.context.api + current.id + '/',
+    //     {headers, method: 'PUT', body}
+    // );
+    const oldItem = this.props.item;
+    const newItem = {
+      'id': oldItem.id,
+      'title': this.state.title,
+      'description': this.state.description,
+      'completed': oldItem.completed,
+    };
+    this.props.editTodo(newItem, index);
+    
+    // this.props.handleUpdate();
     this.props.handleCancel();
   }
 
@@ -62,12 +73,26 @@ class EditItemInterface extends Component {
           (event) => this.setState({description: event.target.value})
         }>
       </textarea>
-      <button onClick={this.editItem}>Submit</button>
+      <button onClick={() => this.editItem(this.props.index)}>Submit</button>
       <button onClick={this.props.handleCancel}>Cancel</button>
     </div>;
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    todos: state.todos,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    editTodo: (index, item) => {
+      dispatch(todos.editTodo(index, item));
+    },
+  };
+};
+
 EditItemInterface.contextType = ApiContext;
 
-export default EditItemInterface;
+export default connect(mapStateToProps, mapDispatchToProps)(EditItemInterface);

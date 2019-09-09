@@ -17,6 +17,7 @@ class EditTodoItem extends Component {
       <div>
         <EditItemInterface
           item={this.props.item}
+          index={this.props.index}
           handleCancel={this.props.handleCancel}
           handleUpdate={this.props.handleUpdate}/>
       </div>

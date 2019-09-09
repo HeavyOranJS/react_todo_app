@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {ApiContext} from './etc/APIContext';
 
+
+
 import EditTodoItem from './EditItem/EditTodoItem';
 import TodoItemInterface from './TodoItemInterface';
 
@@ -13,20 +15,22 @@ class TodoItem extends Component {
       completed: false,
       editing: false,
     };
-    
+
     this.toggleCompleted = this.toggleCompleted.bind(this);
     this.itemDelete = this.itemDelete.bind(this);
   }
 
   async itemDelete() {
-    const headers = {'Content-Type': 'application/json'};
-    const apiId = this.context.api + this.props.item.id + '/';
+    // const headers = {'Content-Type': 'application/json'};
+    // const apiId = this.context.api + this.props.item.id + '/';
 
-    await fetch(
-        apiId,
-        {headers, method: 'DELETE'}
-    );
-    this.props.handleUpdate();
+    // await fetch(
+    //     apiId,
+    //     {headers, method: 'DELETE'}
+    // );
+    // this.props.handleUpdate();
+
+    this.props.deteleTodo(this.props.item.id, this.props.index);
   }
 
   async toggleCompleted() {
@@ -55,11 +59,13 @@ class TodoItem extends Component {
         {
             this.state.editing?
             <EditTodoItem
+              index = {this.props.index}
               item = {this.props.item}
               handleCancel={()=>this.setState({editing: !this.state.editing})}
               handleUpdate={this.props.handleUpdate}
             />:
             <TodoItemInterface
+              index = {this.props.index}
               item={this.props.item}
               handleEdit={()=>this.setState({editing: !this.state.editing})}
               handleUpdate={this.props.handleUpdate}/>
@@ -68,6 +74,7 @@ class TodoItem extends Component {
     );
   }
 }
+
 
 TodoItem.contextType = ApiContext;
 
