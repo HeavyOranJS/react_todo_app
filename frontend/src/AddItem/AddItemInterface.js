@@ -22,20 +22,7 @@ class AddItemInterface extends Component {
   }
 
   async addItem() {
-    // const {itemName, itemDescription} = this.state;
-    // const headers = {'Content-Type': 'application/json'};
-    // const body = JSON.stringify(
-    //     {
-    //       'title': itemName,
-    //       'completed': false,
-    //       'description': itemDescription}
-    // );
-
-    // await fetch(this.context.api, {headers, method: 'POST', body});
-
-    // // this.props.handleUpdate();
     this.props.addTodo(this.state.itemName, this.state.itemDescription);
-    // this.props.fetchTodos();
     this.props.handleCancel();
   }
 
@@ -70,9 +57,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchTodos: () => {
-      dispatch(todos.fetchTodos());
-    },
     addTodo: (name, description) => {
       dispatch(todos.addTodo(name, description));
     },

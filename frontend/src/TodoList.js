@@ -33,12 +33,10 @@ class TodoList extends Component {
   }
 
   componentDidMount() {
-    // this.handleUpdate();
     this.props.fetchTodos();
   }
 
   render() {
-    // const todoItems = this.state.todos.map(
     const todoItems = this.props.todos.map(
         (item) => <TodoItem
           key={item.id}
@@ -49,9 +47,7 @@ class TodoList extends Component {
     return (
       <div>
         {todoItems}
-        <AddTodoItem
-          handleUpdate={this.handleUpdate}
-        />
+        <AddTodoItem/>
       </div>
     );
   }

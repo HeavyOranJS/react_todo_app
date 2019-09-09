@@ -22,8 +22,7 @@ class AddTodoItem extends Component {
                 <AddItemInterface
                   handleCancel={
                     () => this.setState({adding: !this.state.adding})
-                  }
-                  handleUpdate={this.props.handleUpdate}/>:
+                  }/>:
                 addItemButton}
       </div>
     );
