@@ -19,21 +19,6 @@ class EditItemInterface extends Component {
   }
 
   editItem(index) {
-    // const current = this.props.item;
-    // const headers = {'Content-Type': 'application/json'};
-    // const body = JSON.stringify(
-    //     {
-    //       'id': current.id,
-    //       'title': this.state.title,
-    //       'description': this.state.description,
-    //       'completed': current.completed,
-    //     }
-    // );
-
-    // await fetch(
-    //     this.context.api + current.id + '/',
-    //     {headers, method: 'PUT', body}
-    // );
     const oldItem = this.props.item;
     const newItem = {
       'id': oldItem.id,
@@ -42,8 +27,7 @@ class EditItemInterface extends Component {
       'completed': oldItem.completed,
     };
     this.props.editTodo(newItem, index);
-    
-    // this.props.handleUpdate();
+
     this.props.handleCancel();
   }
 

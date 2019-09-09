@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {ApiContext} from './etc/APIContext';
 
-import {connect} from "react-redux";
+import {connect} from 'react-redux';
 
 import todos from './actions';
 
@@ -18,15 +18,6 @@ class TodoItemInterface extends Component {
   }
 
   async itemDelete() {
-    // const headers = {'Content-Type': 'application/json'};
-    // const apiId = this.context.api + this.props.item.id + '/';
-
-    // await fetch(
-    //     apiId,
-    //     {headers, method: 'DELETE'}
-    // );
-    // this.props.handleUpdate();
-    // this.props.itemDelete();
     this.props.deleteTodo(this.props.item.id, this.props.index);
   }
 
@@ -60,7 +51,10 @@ class TodoItemInterface extends Component {
         <button onClick={this.props.handleEdit}>
             Edit
         </button>
-        <button onClick={this.itemDelete}> Delete </button>
+        <button onClick={() =>
+          this.props.deleteTodo(id, this.props.index)}>
+          Delete
+        </button>
       </div>
     );
   }

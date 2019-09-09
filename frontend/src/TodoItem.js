@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import {ApiContext} from './etc/APIContext';
 
-
-
 import EditTodoItem from './EditItem/EditTodoItem';
 import TodoItemInterface from './TodoItemInterface';
 
@@ -17,20 +15,6 @@ class TodoItem extends Component {
     };
 
     this.toggleCompleted = this.toggleCompleted.bind(this);
-    this.itemDelete = this.itemDelete.bind(this);
-  }
-
-  async itemDelete() {
-    // const headers = {'Content-Type': 'application/json'};
-    // const apiId = this.context.api + this.props.item.id + '/';
-
-    // await fetch(
-    //     apiId,
-    //     {headers, method: 'DELETE'}
-    // );
-    // this.props.handleUpdate();
-
-    this.props.deteleTodo(this.props.item.id, this.props.index);
   }
 
   async toggleCompleted() {

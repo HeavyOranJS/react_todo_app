@@ -1,7 +1,6 @@
 const api = 'http://127.0.0.1:8000/api/todos/';
 const headers = {'Content-Type': 'application/json'};
 
-
 export const fetchTodos = () => {
   return async (dispatch) => {
     const res = await fetch(api, {headers});
@@ -64,33 +63,3 @@ export const deleteTodo = (id, index) => {
     });
   };
 };
-
-// async editItem() {
-//   const current = this.props.item;
-//   const headers = {'Content-Type': 'application/json'};
-//   const body = JSON.stringify(
-//       {
-//         'id': current.id,
-//         'title': this.state.title,
-//         'description': this.state.description,
-//         'completed': current.completed,
-//       }
-//   );
-
-//   await fetch(
-//       api + current.id + '/',
-//       {headers, method: 'PUT', body}
-//   );
-
-
-// const {itemName, itemDescription} = this.state;
-// const headers = {'Content-Type': 'application/json'};
-// const body = JSON.stringify(
-//     {
-//       'title': itemName,
-//       'completed': false,
-//       'description': itemDescription}
-// );
-
-// await fetch(this.context.api, {headers, method: 'POST', body});
-

@@ -1,5 +1,3 @@
-import TodoList from '../TodoList';
-
 const initialState = [];
 
 export default function todos(state=initialState, action) {
