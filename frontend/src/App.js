@@ -1,57 +1,23 @@
 import React, {Component} from 'react';
-import TodoItem from './TodoItem';
-import AddTodoItem from './AddItem/AddTodoItem';
-import {ApiContext} from './etc/APIContext';
+
+import {createStore, applyMiddleware} from 'redux';
+import {Provider} from 'react-redux';
+import thunk from 'redux-thunk';
+import todoApp from './reducers';
+
+import TodoList from './TodoList.js';
 import './App.css';
 
-class TodoList extends Component {
-  // @construcror
-  constructor(props) {
-    super(props);
-    this.state = {
-      todos: [],
-    };
+const store = createStore(todoApp, applyMiddleware(thunk));
 
-    this.handleUpdate = this.handleUpdate.bind(this);
-  }
-
-  // TODO: create mechanism to toggle between edit and addition of new item
-  // if addition starts when edit is happening end edit (change state)
-  // and let addition to work
-
-  handleUpdate() {
-    console.log('fetching todolist (see fetched below)');
-    const headers = {'Content-Type': 'application/json'};
-    fetch(this.context.api, {headers})
-        .then((res) => res.json())
-        .then((actualTodos) => (
-          this.setState({todos: actualTodos}))
-        );
-  }
-
-  componentDidMount() {
-    this.handleUpdate();
-  }
-
+class App extends Component {
   render() {
-    const todoItems = this.state.todos.map(
-        (item) => <TodoItem
-          key={item.id}
-          item={item}
-          handleUpdate={this.handleUpdate}
-        />
-    );
     return (
-      <div>
-        {todoItems}
-        <AddTodoItem
-          handleUpdate={this.handleUpdate}
-        />
-      </div>
+      <Provider store={store}>
+        <TodoList/>
+      </Provider>
     );
   }
 }
 
-TodoList.contextType = ApiContext;
-
-export default TodoList;
+export default App;

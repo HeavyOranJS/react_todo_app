@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
 import '../App.css';
 
+import {connect} from 'react-redux';
+
+import todos from '../actions';
+
+
 import {ApiContext} from '../etc/APIContext';
 
 
@@ -17,18 +22,20 @@ class AddItemInterface extends Component {
   }
 
   async addItem() {
-    const {itemName, itemDescription} = this.state;
-    const headers = {'Content-Type': 'application/json'};
-    const body = JSON.stringify(
-        {
-          'title': itemName,
-          'completed': false,
-          'description': itemDescription}
-    );
+    // const {itemName, itemDescription} = this.state;
+    // const headers = {'Content-Type': 'application/json'};
+    // const body = JSON.stringify(
+    //     {
+    //       'title': itemName,
+    //       'completed': false,
+    //       'description': itemDescription}
+    // );
 
-    await fetch(this.context.api, {headers, method: 'POST', body});
+    // await fetch(this.context.api, {headers, method: 'POST', body});
 
-    this.props.handleUpdate();
+    // // this.props.handleUpdate();
+    this.props.addTodo(this.state.itemName, this.state.itemDescription);
+    // this.props.fetchTodos();
     this.props.handleCancel();
   }
 
@@ -55,6 +62,23 @@ class AddItemInterface extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    todos: state.todos,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchTodos: () => {
+      dispatch(todos.fetchTodos());
+    },
+    addTodo: (name, description) => {
+      dispatch(todos.addTodo(name, description));
+    },
+  };
+};
+
 AddItemInterface.contextType = ApiContext;
 
-export default AddItemInterface;
+export default connect(mapStateToProps, mapDispatchToProps)(AddItemInterface);

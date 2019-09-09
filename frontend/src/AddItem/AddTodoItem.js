@@ -25,7 +25,6 @@ class AddTodoItem extends Component {
                   }
                   handleUpdate={this.props.handleUpdate}/>:
                 addItemButton}
-        <button onClick={()=>console.log('TODO: clearall')}>Clear all</button>
       </div>
     );
   }

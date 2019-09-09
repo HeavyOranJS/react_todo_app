@@ -13,6 +13,7 @@ class TodoItem extends Component {
       completed: false,
       editing: false,
     };
+    
     this.toggleCompleted = this.toggleCompleted.bind(this);
     this.itemDelete = this.itemDelete.bind(this);
   }
