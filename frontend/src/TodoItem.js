@@ -37,7 +37,6 @@ class TodoItem extends Component {
   }
 
   render() {
-    // const {id, title, description, completed} = this.props.item;
     return (
       <div className='todo-item'>
         {
@@ -48,8 +47,14 @@ class TodoItem extends Component {
               handleCancel={()=>this.setState({editing: !this.state.editing})}
               handleUpdate={this.props.handleUpdate}
             />:
+            // <ItemInterface
+            //   index = {this.props.index}
+            //   item = {this.props.item}
+            //   status = 'Edit'
+            //   handleCancel={()=>this.setState({editing: !this.state.editing})}
+            // />:
             <TodoItemInterface
-              index = {this.props.index}
+              index={this.props.index}
               item={this.props.item}
               handleEdit={()=>this.setState({editing: !this.state.editing})}
               handleUpdate={this.props.handleUpdate}/>
@@ -58,7 +63,6 @@ class TodoItem extends Component {
     );
   }
 }
-
 
 TodoItem.contextType = ApiContext;
 

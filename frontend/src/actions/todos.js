@@ -14,12 +14,12 @@ export const fetchTodos = () => {
 
 export const addTodo = (name, description) => {
   return async (dispatch) => {
-    const body = JSON.stringify(
-        {
-          'title': name,
-          'completed': false,
-          'description': description}
-    );
+    const body = (
+      '{' +
+          `"title": "${name}",` +
+          `"completed": "${false}",` +
+          `"description": "${description}"}`);
+    // "{"title":"asdf","completed":false,"description":"asdfasdfasdfasdf"}"
 
     const res = await fetch(api, {headers, method: 'POST', body});
     const todo = await res.json();
@@ -33,14 +33,12 @@ export const addTodo = (name, description) => {
 export const editTodo = (item, index) => {
   return async (dispatch) => {
     const {id, title, completed, description} = item;
-    const body = JSON.stringify(
-        {
-          'id': id,
-          'title': title,
-          'completed': completed,
-          'description': description,
-        }
-    );
+    const body = (
+      '{' +
+          `"id": "${id}",` +
+          `"title": "${title}",` +
+          `"completed": "${completed}",` +
+          `"description": "${description}"}`);
 
     const res = await fetch(api + id + '/', {headers, method: 'PUT', body});
     const todo = await res.json();

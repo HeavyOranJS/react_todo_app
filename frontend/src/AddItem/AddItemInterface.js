@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import '../App.css';
 
+import Button from '@material-ui/core/Button';
+// import Icon from '@material-ui/core/Icon';
+import AddIcon from '@material-ui/icons/Add';
+
 import {connect} from 'react-redux';
 
 import todos from '../actions';
@@ -42,7 +46,10 @@ class AddItemInterface extends Component {
           (event) => this.setState({itemDescription: event.target.value})
         }>
       </textarea>
-      <button onClick={this.addItem}>Add</button>
+      
+      <Button variant='text' color='primary' onClick={this.addItem}>
+        <AddIcon color="action"/>Add
+      </Button>
       <button onClick={this.props.handleCancel}>Cancel</button>
     </div>;
   }
