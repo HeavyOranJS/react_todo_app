@@ -24,7 +24,7 @@ class AddItemInterface extends Component {
     this.addItem = this.addItem.bind(this);
   }
 
-  async addItem() {
+  addItem() {
     this.props.addTodo(this.state.itemName, this.state.itemDescription);
     this.props.handleCancel();
   }

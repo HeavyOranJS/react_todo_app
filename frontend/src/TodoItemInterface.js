@@ -22,21 +22,15 @@ class TodoItemInterface extends Component {
   }
 
   async toggleCompleted() {
-    const headers = {'Content-Type': 'application/json'};
     const {id, title, description, completed} = this.props.item;
-    const body = JSON.stringify({
-      'id': id,
-      'title': title,
-      'description': description,
-      'completed': !completed,
-    });
+    const toggledItem = {
+      id: id,
+      title: title,
+      description: description,
+      completed: !completed,
+    };
 
-    await fetch(
-        this.context.api + id + '/',
-        {headers, method: 'PUT', body}
-    );
-
-    this.props.handleUpdate();
+    this.props.toggleTodo(toggledItem, this.props.index);
   }
 
   render() {
@@ -49,7 +43,7 @@ class TodoItemInterface extends Component {
           onChange={this.toggleCompleted}/>
         {title} - {description}
         <button onClick={this.props.handleEdit}>
-            Edit
+          Edit
         </button>
         <button onClick={() =>
           this.props.deleteTodo(id, this.props.index)}>
@@ -59,7 +53,6 @@ class TodoItemInterface extends Component {
     );
   }
 }
-
 
 const mapStateToProps = (state) => {
   return {
@@ -71,6 +64,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     deleteTodo: (id, index) => {
       dispatch(todos.deleteTodo(id, index));
+    },
+    toggleTodo: (item, index) => {
+      dispatch(todos.editTodo(item, index));
     },
   };
 };

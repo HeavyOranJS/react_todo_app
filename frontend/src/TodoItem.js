@@ -13,27 +13,6 @@ class TodoItem extends Component {
       completed: false,
       editing: false,
     };
-
-    this.toggleCompleted = this.toggleCompleted.bind(this);
-  }
-
-  async toggleCompleted() {
-    const headers = {'Content-Type': 'application/json'};
-    const {id, title, description, completed} = this.props.item;
-    const body = JSON.stringify({
-      'id': id,
-      'title': title,
-      'description': description,
-      'completed': !completed,
-    });
-
-    const res = await fetch(
-        this.context.api + id + '/',
-        {headers, method: 'PUT', body}
-    );
-
-    console.log(res);
-    this.props.handleUpdate();
   }
 
   render() {

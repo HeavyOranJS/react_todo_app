@@ -9,16 +9,15 @@ export default function todos(state=initialState, action) {
     case 'ADD_TODO':
       return [...state, action.todo];
     case 'EDIT_TODO':
-      //REFACTOR
-      const editedTodo = todoList[action.index];
-      editedTodo.title = action.todo.title;
-      editedTodo.description = action.todo.description;
-      editedTodo.completed = action.todo.completed;
+      const {title, description, completed} = action.todo;
+      const editedTodo = {
+        'id': todoList[action.index].id,
+        'title': title,
+        'description': description,
+        'completed': completed,
+      };
       todoList.splice(action.index, 1, editedTodo);
       return todoList;
-    case 'TOGGLE_TODO':
-      
-      return state;
     case 'DELETE_TODO':
       todoList.splice(action.index, 1);
       return todoList;

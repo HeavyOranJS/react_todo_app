@@ -19,7 +19,6 @@ export const addTodo = (name, description) => {
           `"title": "${name}",` +
           `"completed": "${false}",` +
           `"description": "${description}"}`);
-    // "{"title":"asdf","completed":false,"description":"asdfasdfasdfasdf"}"
 
     const res = await fetch(api, {headers, method: 'POST', body});
     const todo = await res.json();
