@@ -31,3 +31,36 @@
     transform: rotate(360deg);
   }
 }
+
+/* ================ */
+/* 
+.wrapper{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
+
+.todoList{
+  display: grid;
+  grid-column: 2;
+
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(10px, auto);
+}
+
+.todo-item{
+  grid-column: 1/5;
+
+  grid-gap: 10px;
+  grid-auto-rows: minmax(10px, auto);
+}
+
+.todo-title{
+  grid-column: 1;
+}
+
+.todo-description{
+  grid-column: 2;
+} */

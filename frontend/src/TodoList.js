@@ -39,18 +39,21 @@ class TodoList extends Component {
   render() {
     const todoItems = this.props.todos.map(
         (item, index) => <TodoItem
-          className='row'
           key={item.id}
           index={index}
           item={item}
           handleUpdate={this.handleUpdate}
         />
     );
+    // TODO: find better way to return object and jsx without html wrapper
+    // const wrapper = [todoItems, <AddTodoItem/>];
     return (
-      <div>
-        {todoItems}
+      <main className="wrapper">
+        <ul className="todo-list">
+          {todoItems}
+        </ul>
         <AddTodoItem/>
-      </div>
+      </main>
     );
   }
 }

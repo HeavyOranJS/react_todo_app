@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {ApiContext} from './etc/APIContext';
 
-import EditTodoItem from './EditItem/EditTodoItem';
+import Description from './Description';
+import EditItem from './EditItem';
 import TodoItemInterface from './TodoItemInterface';
 
 
@@ -12,34 +13,53 @@ class TodoItem extends Component {
     this.state = {
       completed: false,
       editing: false,
+      open: false,
     };
+  }
+
+  renderItem(editing) {
+    if (editing) {
+      return <EditItem
+        index={this.props.index}
+        item={this.props.item}
+        handleCancel={()=>this.setState({editing: false})}/>;
+    }
+    return <TodoItemInterface
+      index={this.props.index}
+      item={this.props.item}
+      handleEdit={()=>this.setState({editing: true})}
+      handleCollapse={() => this.setState({open: !this.state.open})}/>;
   }
 
   render() {
     return (
-      <div className='todo-item'>
+      <li className='todo-item'>
+        {this.renderItem(this.state.editing)}
         {
-            this.state.editing?
-            <EditTodoItem
-              index = {this.props.index}
-              item = {this.props.item}
-              handleCancel={()=>this.setState({editing: !this.state.editing})}
-              handleUpdate={this.props.handleUpdate}
-            />:
-            // <ItemInterface
-            //   index = {this.props.index}
-            //   item = {this.props.item}
-            //   status = 'Edit'
-            //   handleCancel={()=>this.setState({editing: !this.state.editing})}
-            // />:
-            <TodoItemInterface
+          this.state.open &&
+            <Description
               index={this.props.index}
               item={this.props.item}
-              handleEdit={()=>this.setState({editing: !this.state.editing})}
-              handleUpdate={this.props.handleUpdate}/>
+            />
         }
-      </div>
+
+      </li>
     );
+
+
+    // this.state.editing?
+    // <EditTodoItem
+    //   index = {this.props.index}
+    //   item = {this.props.item}
+    //   handleCancel={()=>this.setState({editing: !this.state.editing})}
+    //   handleUpdate={this.props.handleUpdate}
+    // />:
+    // <ItemInterface
+    //   index = {this.props.index}
+    //   item = {this.props.item}
+    //   status = 'Edit'
+    //   handleCancel={()=>this.setState({editing: !this.state.editing})}
+    // />:
   }
 }
 

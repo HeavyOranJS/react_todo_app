@@ -12,16 +12,17 @@ class TodoItemInterface extends Component {
     this.state = {
       completed: false,
       editing: false,
+      open: false,
     };
-    this.toggleCompleted = this.toggleCompleted.bind(this);
+    this.toggleTodo = this.toggleTodo.bind(this);
     this.itemDelete = this.itemDelete.bind(this);
   }
 
-  async itemDelete() {
+  itemDelete() {
     this.props.deleteTodo(this.props.item.id, this.props.index);
   }
 
-  async toggleCompleted() {
+  toggleTodo() {
     const {id, title, description, completed} = this.props.item;
     const toggledItem = {
       id: id,
@@ -34,22 +35,53 @@ class TodoItemInterface extends Component {
   }
 
   render() {
-    const {id, title, description, completed} = this.props.item;
+    const {title, completed} = this.props.item;
     return (
-      <div className='todo-item'>
+      <form className="todo-item-interface">
         <input
           type='checkbox'
+          className='todo-item-completion'
           checked={completed}
-          onChange={this.toggleCompleted}/>
-        {title} - {description}
-        <button onClick={this.props.handleEdit}>
-          Edit
-        </button>
-        <button onClick={() =>
-          this.props.deleteTodo(id, this.props.index)}>
-          Delete
-        </button>
-      </div>
+          onChange={this.toggleTodo}/>
+
+        <span
+          className="todo-item-title"
+          onClick={this.props.handleEdit}
+        >{title}</span>
+
+        <input
+          type='button'
+          value='Collapse'
+          className='todo-item-expand'
+          // TODO change from toggle?
+          onClick={() => (
+            // this.setState({open: !this.state.open})
+            this.props.handleCollapse()
+          )}
+        />
+
+        {/* {this.getExpandedItem(description)} */}
+
+        {/* <input
+            type='submit'
+            value='Edit'
+            className='todo-item-edit'
+            onClick={this.props.handleEdit}/> */}
+
+        {/* <input
+            type='submit'
+            value='Expand'
+            className='todo-item-expand'
+            onClick={}/> */}
+
+
+        {/* <input
+            type='submit'
+            value='Delete'
+            className='todo-item-delete'
+            onClick={() =>
+              this.props.deleteTodo(id, this.props.index)}/> */}
+      </form>
     );
   }
 }

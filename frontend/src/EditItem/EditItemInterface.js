@@ -39,27 +39,31 @@ class EditItemInterface extends Component {
   }
 
   render() {
-    return <div>
+    return <form className='item-edit-interface'>
       <input
-        name='todoItemName'
+        type='text'
         value={this.state.title}
         placeholder='item name'
-        type='text'
-        onChange={(event) => this.setState({title: event.target.value})}>
-      </input>
+        onChange={(event) => this.setState({title: event.target.value})}/>
+
       <textarea
-        name='todoItemDescription'
         value={this.state.description}
         placeholder='item description'
         rows="4"
         cols="50"
         onChange={
-          (event) => this.setState({description: event.target.value})
-        }>
-      </textarea>
-      <button onClick={() => this.editItem(this.props.index)}>Submit</button>
-      <button onClick={this.props.handleCancel}>Cancel</button>
-    </div>;
+          (event) => this.setState({description: event.target.value})}/>
+
+      <input
+        type='submit'
+        value='Submit'
+        onClick={() => this.editItem(this.props.index)}/>
+
+      <input
+        type='submit'
+        value='Cancel'
+        onClick={this.props.handleCancel}/>
+    </form>;
   }
 }
 

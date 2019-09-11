@@ -1,10 +1,6 @@
 import React, {Component} from 'react';
 import '../App.css';
 
-import Button from '@material-ui/core/Button';
-// import Icon from '@material-ui/core/Icon';
-import AddIcon from '@material-ui/icons/Add';
-
 import {connect} from 'react-redux';
 
 import todos from '../actions';
@@ -30,28 +26,31 @@ class AddItemInterface extends Component {
   }
 
   render() {
-    return <div>
+    return <form className='todo-item-add-interface'>
       <input
-        name='todoItemName'
-        placeholder='item name'
         type='text'
-        onChange={(event) => this.setState({itemName: event.target.value})}>
-      </input>
+        placeholder='Item name'
+        onChange={(event) => this.setState({itemName: event.target.value})}/>
+
       <textarea
-        name='todoItemDescription'
-        placeholder='item description'
+        placeholder='Item description'
         rows="4"
         cols="50"
         onChange={
-          (event) => this.setState({itemDescription: event.target.value})
-        }>
-      </textarea>
-      
-      <Button variant='text' color='primary' onClick={this.addItem}>
-        <AddIcon color="action"/>Add
-      </Button>
-      <button onClick={this.props.handleCancel}>Cancel</button>
-    </div>;
+          (event) => this.setState({itemDescription: event.target.value})}/>
+
+      <input
+        type='button'
+        value='Add item'
+        className='item-add'
+        onClick={this.addItem}>
+      </input>
+
+      <input
+        type='button'
+        value='Cancel'
+        onClick={this.props.handleCancel}/>
+    </form>;
   }
 }
 

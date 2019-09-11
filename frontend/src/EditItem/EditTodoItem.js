@@ -14,13 +14,13 @@ class EditTodoItem extends Component {
 
   render() {
     return (
-      <div>
+      <li className='todo-item'>
         <EditItemInterface
           item={this.props.item}
           index={this.props.index}
           handleCancel={this.props.handleCancel}
           handleUpdate={this.props.handleUpdate}/>
-      </div>
+      </li>
     );
   }
 }
