@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import './App.css';
 import todos from './actions';
 
+import 'font-awesome/css/font-awesome.min.css';
+
 class EditItem extends Component {
   constructor(props) {
     super(props);
@@ -31,19 +33,25 @@ class EditItem extends Component {
     return <form className='todo-item-edit-interface'>
       <input
         type='text'
+        className='text-input'
         value={this.state.title}
         placeholder='item name'
         onChange={(event) => this.setState({title: event.target.value})}/>
 
-      <input
+      <button
         type='button'
-        value='Edit'
-        onClick={() => this.editItem(this.props.index, this.props.item)}/>
+        className='invisible'
+        onClick={() => (
+          this.editItem(this.props.index, this.props.item))}>
+        <i className="fa fa-check action accept"></i>
+      </button>
 
-      <input
+      <button
         type='button'
-        value='Cancel'
-        onClick={this.props.handleCancel}/>
+        className='invisible'
+        onClick={this.props.handleCancel}>
+        <i className="fa fa-times action reject"></i>
+      </button>
     </form>;
   }
 }

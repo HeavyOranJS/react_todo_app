@@ -12,8 +12,7 @@ class EditItemInterface extends Component {
 
     this.state = {
       title: '',
-      description: '',
-    };
+      description: ''};
 
     this.editItem = this.editItem.bind(this);
   }

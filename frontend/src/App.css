@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -33,34 +34,189 @@
 }
 
 /* ================ */
-/* 
-.wrapper{
+
+:root{
+  --color-main: #FFFFF3;
+  --color-background: #FFDFE9; /*mimi pink FTW*/
+  /* --color-background: #FFD8E5; mimi pink FTW */
+
+  --color-accent: #6B717E;
+  --color-accept: #00D9C0;
+  --color-danger: #FF4365;
+}
+
+.invisible{
+  background: transparent;
+  border: none;
+  padding: 0px;
+  margin: 0px;
+  /* color:transparent; */
+}
+
+.accept{
+  color: var(--color-accept);
+}
+
+.reject{
+  color: var(--color-danger);
+}
+
+.danger{
+  color: var(--color-danger);
+}
+
+.item{
+  margin: 5px;
+  border-radius: 2px;
+  background-color: var(--color-main);
+  box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.33);
+
+  font-family: sans-serif;
+  font-size:14px;
+}
+
+.text-input{
+  margin: 5px;
+
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 2px;
+  border-color: var(--color-accent);
+  background-color: var(--color-main);
+
+  font-family: sans-serif;
+  font-size:14px;
+}
+
+input[type="text"]
+{
+  /* font-family: Georgia, 'Times New Roman', Times, serif; */
+  font-family: sans-serif;
+  font-size:14px;
+}
+
+.action{
+  /* TODO: learn what em is */
+  margin: auto auto;
+  font-size: 1.5em;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.33);
+}
+
+.btn{
+  /* TODO: fix add item button or make it not a button */
+  /* display: block;
+  width: 100%;
+  padding: 0px;
+  border: 0px; */
+  /* border-style: solid; */
+  /* width: 100%; */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 25px;
+
+  /* text-align: center; */
+
+  /* vertical-align: middle; */
+  /* margin: auto auto; */
+  
+}
+
+body{
+  background-color: var(--color-background);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
-  grid-auto-rows: minmax(100px, auto);
 }
 
-.todoList{
+#root{
+  grid-column: 2;
+}
+
+textarea{
+  overflow: hidden;
+  resize: none;
+}
+
+.todo-list{
+  padding: 0;
+  /* margin-inline-start: 10px; */
+  padding-top: 10px;
+  margin: 0 auto;
+
+  list-style-type: none;
+}
+
+.add-item-button{
+  /* width: 100%; */
+  /* height: 20px;
+  width: 100px; */
+}
+
+.todo-item-interface{
   display: grid;
-  grid-column: 2;
-
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 10px;
-  grid-auto-rows: minmax(10px, auto);
+  grid-template-columns: 20px auto 30px;
 }
 
-.todo-item{
-  grid-column: 1/5;
-
-  grid-gap: 10px;
-  grid-auto-rows: minmax(10px, auto);
-}
-
-.todo-title{
+.todo-item-completion{
+  min-height: 30px;
   grid-column: 1;
+  margin: auto auto;
 }
 
-.todo-description{
+.todo-item-title{
   grid-column: 2;
-} */
+  margin: auto 0;
+}
+
+.todo-item-expand{
+  grid-column: 3;
+}
+
+.todo-item-description{
+  display: grid;
+  grid-template-columns: 20px auto 30px;
+  /* margin: auto auto; */
+  /* margin: auto 10px; */
+}
+
+.todo-item-description-text{
+  grid-column: 2;
+}
+
+.todo-item-description-delete{
+  grid-column: 3;
+}
+
+.todo-item-edit-interface{
+  display: grid;
+  grid-template-columns: auto 30px 30px;
+}
+
+.todo-item-interface-edit-descriprion{
+  display: grid;
+  grid-template-columns: auto 30px;
+  grid-template-rows: 30px 30px;
+}
+
+.description-edit{
+  grid-column: 1;
+  grid-row: 1/3;
+}
+
+
+#todo-item-add-interface{
+  display: grid;
+  grid-template-columns: auto 30px 30px;
+  grid-template-rows: auto auto;
+}
+
+#todo-item-add-title{
+  grid-column: 1;
+  grid-row: 1;
+}
+
+#todo-item-add-description{
+  grid-column: 1/4;
+  grid-row: 2;
+}

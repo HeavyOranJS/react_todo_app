@@ -27,13 +27,14 @@ class TodoItem extends Component {
     return <TodoItemInterface
       index={this.props.index}
       item={this.props.item}
+      open={this.state.open}
       handleEdit={()=>this.setState({editing: true})}
       handleCollapse={() => this.setState({open: !this.state.open})}/>;
   }
 
   render() {
     return (
-      <li className='todo-item'>
+      <li className='item'>
         {this.renderItem(this.state.editing)}
         {
           this.state.open &&
@@ -45,21 +46,6 @@ class TodoItem extends Component {
 
       </li>
     );
-
-
-    // this.state.editing?
-    // <EditTodoItem
-    //   index = {this.props.index}
-    //   item = {this.props.item}
-    //   handleCancel={()=>this.setState({editing: !this.state.editing})}
-    //   handleUpdate={this.props.handleUpdate}
-    // />:
-    // <ItemInterface
-    //   index = {this.props.index}
-    //   item = {this.props.item}
-    //   status = 'Edit'
-    //   handleCancel={()=>this.setState({editing: !this.state.editing})}
-    // />:
   }
 }
 

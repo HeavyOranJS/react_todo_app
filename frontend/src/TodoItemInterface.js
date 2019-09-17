@@ -3,17 +3,18 @@ import {ApiContext} from './etc/APIContext';
 
 import {connect} from 'react-redux';
 
+import 'font-awesome/css/font-awesome.min.css';
+
 import todos from './actions';
 
 class TodoItemInterface extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       completed: false,
       editing: false,
-      open: false,
     };
+
     this.toggleTodo = this.toggleTodo.bind(this);
     this.itemDelete = this.itemDelete.bind(this);
   }
@@ -44,43 +45,22 @@ class TodoItemInterface extends Component {
           checked={completed}
           onChange={this.toggleTodo}/>
 
-        <span
+        <p
           className="todo-item-title"
           onClick={this.props.handleEdit}
-        >{title}</span>
+        >
+          {title}
+        </p>
 
-        <input
+        <button
           type='button'
-          value='Collapse'
-          className='todo-item-expand'
-          // TODO change from toggle?
+          className='todo-item-expand invisible'
           onClick={() => (
-            // this.setState({open: !this.state.open})
-            this.props.handleCollapse()
-          )}
-        />
-
-        {/* {this.getExpandedItem(description)} */}
-
-        {/* <input
-            type='submit'
-            value='Edit'
-            className='todo-item-edit'
-            onClick={this.props.handleEdit}/> */}
-
-        {/* <input
-            type='submit'
-            value='Expand'
-            className='todo-item-expand'
-            onClick={}/> */}
-
-
-        {/* <input
-            type='submit'
-            value='Delete'
-            className='todo-item-delete'
-            onClick={() =>
-              this.props.deleteTodo(id, this.props.index)}/> */}
+            this.props.handleCollapse())}>
+          {this.props.open?
+            <i className="fa fa-chevron-up"></i>:
+            <i className="fa fa-chevron-down"></i>}
+        </button>
       </form>
     );
   }

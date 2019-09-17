@@ -7,6 +7,8 @@ import EditDescription from './EditDescription';
 
 import todos from './actions';
 
+import 'font-awesome/css/font-awesome.min.css';
+
 class Description extends Component {
   constructor(props) {
     super(props);
@@ -17,27 +19,35 @@ class Description extends Component {
     };
   }
 
+  renderDescription(id, description, editing) {
+    if (editing) {
+      return <EditDescription
+        index={this.props.index}
+        item={this.props.item}
+        handleCancel={() => (this.setState({editing: !this.state.editing}))}/>;
+    }
+    return (
+      <form className="todo-item-description">
+        <p
+          className="todo-item-description-text"
+          onClick={() => (
+            this.setState({editing: true}))}>{description}</p>
+        <button
+          type='button'
+          className='todo-item-description-delete invisible'
+          onClick={() => (
+            this.props.deleteTodo(id, this.props.index))}>
+          <i className="fa fa-trash action danger"></i>
+        </button>
+      </form>
+
+    );
+  }
+
   render() {
     const {id, description} = this.props.item;
     return (
-      <form
-        className="todo-item-description">
-        {
-          this.state.editing?
-          <EditDescription
-            index={this.props.index}
-            item={this.props.item}
-            handleCancel={() => (this.setState({editing: !this.state.editing}))}/>:
-          <span onClick={() => (
-            this.setState({editing: true}))}>{description}</span>
-        }
-        <input
-          type='button'
-          value='Delete'
-          className='todo-item-delete'
-          onClick={() =>
-            this.props.deleteTodo(id, this.props.index)}/>
-      </form>
+      this.renderDescription(id, description, this.state.editing)
     );
   }
 }

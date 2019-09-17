@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 
 import todos from '../actions';
 
-import {ApiContext} from '../etc/APIContext';
+import 'font-awesome/css/font-awesome.min.css';
 
 
 class AddItemInterface extends Component {
@@ -26,30 +26,37 @@ class AddItemInterface extends Component {
   }
 
   render() {
-    return <form className='todo-item-add-interface'>
+    return <form id='todo-item-add-interface'
+      className='item'>
       <input
+        id='todo-item-add-title'
+        className='text-input'
         type='text'
         placeholder='Item name'
         onChange={(event) => this.setState({itemName: event.target.value})}/>
 
       <textarea
+        id='todo-item-add-description'
+        className='text-input'
         placeholder='Item description'
         rows="4"
         cols="50"
         onChange={
           (event) => this.setState({itemDescription: event.target.value})}/>
 
-      <input
+      <button
         type='button'
-        value='Add item'
-        className='item-add'
+        className='invisible'
         onClick={this.addItem}>
-      </input>
+        <i className="fa fa-check action accept"></i>
+      </button>
 
-      <input
+      <button
         type='button'
-        value='Cancel'
-        onClick={this.props.handleCancel}/>
+        className='invisible'
+        onClick={this.props.handleCancel}>
+        <i className="fa fa-times action reject"></i>
+      </button>
     </form>;
   }
 }
@@ -67,7 +74,5 @@ const mapDispatchToProps = (dispatch) => {
     },
   };
 };
-
-AddItemInterface.contextType = ApiContext;
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddItemInterface);

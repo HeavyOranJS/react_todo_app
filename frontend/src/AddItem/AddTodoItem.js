@@ -13,15 +13,12 @@ class AddTodoItem extends Component {
 
   render() {
     const addItemButton = (
-      <button
-        className='add-item-button'
+      <div
+        className='add-item-button item btn'
         onClick={() => this.setState({adding: !this.state.adding})}>
           Add item
-      </button>);
-    // const addItemButton = (
-    //   <button onClick={() => this.setState({adding: !this.state.adding})}>
-    //         Add item
-    //   </button>);
+      </div>
+    );
     return (
         this.state.adding?
                 <AddItemInterface
