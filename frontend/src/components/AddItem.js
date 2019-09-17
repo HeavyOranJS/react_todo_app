@@ -1,14 +1,10 @@
 import React, {Component} from 'react';
-import '../App.css';
 
 import {connect} from 'react-redux';
 
 import todos from '../actions';
 
-import 'font-awesome/css/font-awesome.min.css';
-
-
-class AddItemInterface extends Component {
+class AddItem extends Component {
   constructor(props) {
     super(props);
 
@@ -48,14 +44,14 @@ class AddItemInterface extends Component {
         type='button'
         className='invisible'
         onClick={this.addItem}>
-        <i className="fa fa-check action accept"></i>
+        <i className="fa fa-check action accept"/>
       </button>
 
       <button
         type='button'
         className='invisible'
         onClick={this.props.handleCancel}>
-        <i className="fa fa-times action reject"></i>
+        <i className="fa fa-times action reject"/>
       </button>
     </form>;
   }
@@ -75,4 +71,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddItemInterface);
+export default connect(mapStateToProps, mapDispatchToProps)(AddItem);

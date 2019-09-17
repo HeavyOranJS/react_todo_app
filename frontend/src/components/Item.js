@@ -1,13 +1,10 @@
 import React, {Component} from 'react';
-import {ApiContext} from './etc/APIContext';
 
 import {connect} from 'react-redux';
 
-import 'font-awesome/css/font-awesome.min.css';
+import todos from '../actions';
 
-import todos from './actions';
-
-class TodoItemInterface extends Component {
+class Item extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,11 +13,6 @@ class TodoItemInterface extends Component {
     };
 
     this.toggleTodo = this.toggleTodo.bind(this);
-    this.itemDelete = this.itemDelete.bind(this);
-  }
-
-  itemDelete() {
-    this.props.deleteTodo(this.props.item.id, this.props.index);
   }
 
   toggleTodo() {
@@ -45,10 +37,8 @@ class TodoItemInterface extends Component {
           checked={completed}
           onChange={this.toggleTodo}/>
 
-        <p
-          className="todo-item-title"
-          onClick={this.props.handleEdit}
-        >
+        <p className="todo-item-title"
+          onClick={this.props.handleEdit}>
           {title}
         </p>
 
@@ -58,8 +48,8 @@ class TodoItemInterface extends Component {
           onClick={() => (
             this.props.handleCollapse())}>
           {this.props.open?
-            <i className="fa fa-chevron-up"></i>:
-            <i className="fa fa-chevron-down"></i>}
+            <i className="fa fa-chevron-up"/>:
+            <i className="fa fa-chevron-down"/>}
         </button>
       </form>
     );
@@ -74,15 +64,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    deleteTodo: (id, index) => {
-      dispatch(todos.deleteTodo(id, index));
-    },
     toggleTodo: (item, index) => {
       dispatch(todos.editTodo(item, index));
     },
   };
 };
 
-TodoItemInterface.contextType = ApiContext;
-
-export default connect(mapStateToProps, mapDispatchToProps)(TodoItemInterface);
+export default connect(mapStateToProps, mapDispatchToProps)(Item);

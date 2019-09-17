@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import '../App.css';
-import AddItemInterface from './AddItemInterface';
+import AddItem from './AddItem';
 
-class AddTodoItem extends Component {
+class AddItemContainer extends Component {
   constructor(props) {
     super(props);
 
@@ -19,15 +18,18 @@ class AddTodoItem extends Component {
           Add item
       </div>
     );
+
+    const addItem = (
+      <AddItem handleCancel={
+        () => this.setState({adding: !this.state.adding})
+      }/>
+    );
     return (
         this.state.adding?
-                <AddItemInterface
-                  handleCancel={
-                    () => this.setState({adding: !this.state.adding})
-                  }/>:
+                addItem:
                 addItemButton
     );
   }
 }
 
-export default AddTodoItem;
+export default AddItemContainer;

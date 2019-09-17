@@ -1,20 +1,15 @@
 import React, {Component} from 'react';
-import {ApiContext} from './etc/APIContext';
-
 import {connect} from 'react-redux';
 
 import EditDescription from './EditDescription';
 
-import todos from './actions';
-
-import 'font-awesome/css/font-awesome.min.css';
+import todos from '../actions';
 
 class Description extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      completed: false,
       editing: false,
     };
   }
@@ -37,7 +32,7 @@ class Description extends Component {
           className='todo-item-description-delete invisible'
           onClick={() => (
             this.props.deleteTodo(id, this.props.index))}>
-          <i className="fa fa-trash action danger"></i>
+          <i className="fa fa-trash action danger"/>
         </button>
       </form>
 
@@ -65,7 +60,5 @@ const mapDispatchToProps = (dispatch) => {
     },
   };
 };
-
-Description.contextType = ApiContext;
 
 export default connect(mapStateToProps, mapDispatchToProps)(Description);

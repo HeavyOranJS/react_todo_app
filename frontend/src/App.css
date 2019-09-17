@@ -90,37 +90,21 @@
 
 input[type="text"]
 {
-  /* font-family: Georgia, 'Times New Roman', Times, serif; */
   font-family: sans-serif;
   font-size:14px;
 }
 
 .action{
-  /* TODO: learn what em is */
   margin: auto auto;
   font-size: 1.5em;
   text-shadow: 1px 1px 1px rgba(0,0,0,0.33);
 }
 
 .btn{
-  /* TODO: fix add item button or make it not a button */
-  /* display: block;
-  width: 100%;
-  padding: 0px;
-  border: 0px; */
-  /* border-style: solid; */
-  /* width: 100%; */
-
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 25px;
-
-  /* text-align: center; */
-
-  /* vertical-align: middle; */
-  /* margin: auto auto; */
-  
 }
 
 body{
@@ -140,17 +124,10 @@ textarea{
 
 .todo-list{
   padding: 0;
-  /* margin-inline-start: 10px; */
   padding-top: 10px;
   margin: 0 auto;
 
   list-style-type: none;
-}
-
-.add-item-button{
-  /* width: 100%; */
-  /* height: 20px;
-  width: 100px; */
 }
 
 .todo-item-interface{
@@ -176,8 +153,6 @@ textarea{
 .todo-item-description{
   display: grid;
   grid-template-columns: 20px auto 30px;
-  /* margin: auto auto; */
-  /* margin: auto 10px; */
 }
 
 .todo-item-description-text{

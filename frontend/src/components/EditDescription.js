@@ -2,9 +2,7 @@ import React, {Component} from 'react';
 
 import {connect} from 'react-redux';
 
-import 'font-awesome/css/font-awesome.min.css';
-
-import todos from './actions';
+import todos from '../actions';
 
 class EditDescription extends Component {
   constructor(props) {
@@ -43,14 +41,14 @@ class EditDescription extends Component {
           type="button"
           className="todo-item-description-done invisible"
           onClick={() => this.editItem(this.props.index, this.props.item)}>
-          <i className="fa fa-check action accept"></i>
+          <i className="fa fa-check action accept"/>
         </button>
 
         <button
           type="button"
           className="todo-item-description-cancel invisible"
           onClick={() => this.props.handleCancel()}>
-          <i className="fa fa-times action reject"></i>
+          <i className="fa fa-times action reject"/>
         </button>
       </form>
     );

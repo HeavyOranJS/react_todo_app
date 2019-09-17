@@ -1,17 +1,15 @@
 import React, {Component} from 'react';
-import {ApiContext} from './etc/APIContext';
 
 import Description from './Description';
 import EditItem from './EditItem';
-import TodoItemInterface from './TodoItemInterface';
+import Item from './Item';
 
 
-class TodoItem extends Component {
+class ItemContainer extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      completed: false,
       editing: false,
       open: false,
     };
@@ -24,7 +22,7 @@ class TodoItem extends Component {
         item={this.props.item}
         handleCancel={()=>this.setState({editing: false})}/>;
     }
-    return <TodoItemInterface
+    return <Item
       index={this.props.index}
       item={this.props.item}
       open={this.state.open}
@@ -43,12 +41,9 @@ class TodoItem extends Component {
               item={this.props.item}
             />
         }
-
       </li>
     );
   }
 }
 
-TodoItem.contextType = ApiContext;
-
-export default TodoItem;
+export default ItemContainer;
