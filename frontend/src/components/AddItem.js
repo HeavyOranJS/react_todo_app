@@ -23,13 +23,29 @@ class AddItem extends Component {
 
   render() {
     return <form id='todo-item-add-interface'
-      className='item'>
-      <input
-        id='todo-item-add-title'
-        className='text-input'
-        type='text'
-        placeholder='Item name'
-        onChange={(event) => this.setState({itemName: event.target.value})}/>
+      className='item column'>
+      <div className='row'>
+        <input
+          id='todo-item-add-title'
+          className='text-input main-element'
+          type='text'
+          placeholder='Item name'
+          onChange={(event) => this.setState({itemName: event.target.value})}/>
+
+        <button
+          type='button'
+          className='invisible'
+          onClick={this.addItem}>
+          <i className="fa fa-check action accept"/>
+        </button>
+
+        <button
+          type='button'
+          className='invisible'
+          onClick={this.props.handleCancel}>
+          <i className="fa fa-times action reject"/>
+        </button>
+      </div>
 
       <textarea
         id='todo-item-add-description'
@@ -40,19 +56,7 @@ class AddItem extends Component {
         onChange={
           (event) => this.setState({itemDescription: event.target.value})}/>
 
-      <button
-        type='button'
-        className='invisible'
-        onClick={this.addItem}>
-        <i className="fa fa-check action accept"/>
-      </button>
 
-      <button
-        type='button'
-        className='invisible'
-        onClick={this.props.handleCancel}>
-        <i className="fa fa-times action reject"/>
-      </button>
     </form>;
   }
 }

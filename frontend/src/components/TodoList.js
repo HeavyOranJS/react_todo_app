@@ -26,8 +26,8 @@ class TodoList extends Component {
         />
     );
     return (
-      <main className="wrapper">
-        <ul className="todo-list">
+      <main id="main-wrapper">
+        <ul id="todo-list">
           {todoItems}
         </ul>
         <AddItemContainer/>

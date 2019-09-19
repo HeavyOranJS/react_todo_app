@@ -1,0 +1,110 @@
+$color-main: #FFFFF3;
+$color-background: #FFDFE9; /*mimi pink FTW*/
+$color-accent: #6B717E;
+$color-accept: #00D9C0;
+$color-danger: #FF4365;
+
+body {
+  background-color: $color-background;
+}
+
+p{
+  margin: 0.5em auto;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+textarea {
+  overflow: hidden;
+  resize: none;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.invisible {
+  background: transparent;
+  border: none;
+  padding: 0px;
+}
+
+.accept {
+  color: $color-accept;
+}
+
+.reject {
+  color: $color-danger;
+}
+
+.item {
+  margin: 5px;
+  border-radius: 2px;
+  background-color: $color-main;
+  box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.33);
+
+  font-family: sans-serif;
+  font-size:14px;
+}
+
+// supposed to be applied to text-areas and text inputs
+.text-input {
+  margin: 5px;
+
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 2px;
+  border-color: $color-accent;
+  background-color: $color-main;
+
+  font-family: sans-serif;
+  font-size:14px;
+}
+
+.action {
+  margin: auto auto;
+  font-size: 1.5em;
+  min-width: 1.5em;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.33);
+}
+
+.main-element {
+  flex: 1;
+}
+
+#main-wrapper {
+  max-width: 33%;
+  margin: 0 auto;
+}
+
+// breaks #todo-item-description-wrapper if applied in .row
+#todo-item-interface {
+  align-items: center;
+}
+
+// TODO: make chevron non-collapsable
+#todo-item-expand {
+  width: 30px;
+}
+
+#add-item-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 25px;
+}
+
+#todo-item-description-text {
+  margin-left: 15px;
+}

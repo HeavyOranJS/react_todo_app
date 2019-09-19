@@ -13,7 +13,8 @@ class AddItemContainer extends Component {
   render() {
     const addItemButton = (
       <div
-        className='add-item-button item btn'
+        id='add-item-button'
+        className='item'
         onClick={() => this.setState({adding: !this.state.adding})}>
           Add item
       </div>

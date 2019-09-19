@@ -25,7 +25,7 @@ SECRET_KEY = ')4!)4i7)!eebtpc)&41v$uqyi$v@2w+l7=rb+aj7!ep0a7(v$h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1']
 
 
 # Application definition
@@ -109,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Vladivostok'
 
 USE_I18N = True
 
@@ -123,12 +123,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# CORS_ORIGIN_WHITELIST = (
-#     'http://localhost:3000/'
-# )
-
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
     'http://localhost:8000',
     'http://localhost:8080',
 ]
+

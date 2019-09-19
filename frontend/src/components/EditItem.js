@@ -27,15 +27,17 @@ class EditItem extends Component {
   }
 
   render() {
-    return <form className='todo-item-edit-interface'>
+    return <form className='row'>
       <input
+        id='todo-item-edit-interface-title'
         type='text'
-        className='text-input'
+        className='text-input main-element'
         value={this.state.title}
         placeholder='item name'
         onChange={(event) => this.setState({title: event.target.value})}/>
 
       <button
+        id='todo-item-edit-interface-accept'
         type='button'
         className='invisible'
         onClick={() => (
@@ -44,6 +46,7 @@ class EditItem extends Component {
       </button>
 
       <button
+        id='todo-item-edit-interface-cancel'
         type='button'
         className='invisible'
         onClick={this.props.handleCancel}>

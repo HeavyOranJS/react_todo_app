@@ -30,21 +30,24 @@ class Item extends Component {
   render() {
     const {title, completed} = this.props.item;
     return (
-      <form className="todo-item-interface">
+      <form id="todo-item-interface"
+        className='row'>
         <input
           type='checkbox'
-          className='todo-item-completion'
+          id='todo-item-completion'
           checked={completed}
           onChange={this.toggleTodo}/>
 
-        <p className="todo-item-title"
+        <p id='todo-item-title'
+          className='main-element'
           onClick={this.props.handleEdit}>
           {title}
         </p>
 
         <button
           type='button'
-          className='todo-item-expand invisible'
+          id='todo-item-expand'
+          className='invisible'
           onClick={() => (
             this.props.handleCollapse())}>
           {this.props.open?

@@ -27,7 +27,7 @@ class EditDescription extends Component {
 
   render() {
     return (
-      <form className="todo-item-interface-edit-descriprion">
+      <form className="row">
         <textarea
           className="text-input description-edit"
           value={this.state.description}
@@ -37,19 +37,21 @@ class EditDescription extends Component {
           onChange={(event) => this.setState({description: event.target.value})}
         />
 
-        <button
-          type="button"
-          className="todo-item-description-done invisible"
-          onClick={() => this.editItem(this.props.index, this.props.item)}>
-          <i className="fa fa-check action accept"/>
-        </button>
+        <div id='todo-item-description-wrapper' className='column'>
+          <button
+            type="button"
+            className="todo-item-description-done invisible"
+            onClick={() => this.editItem(this.props.index, this.props.item)}>
+            <i className="fa fa-check action accept"/>
+          </button>
 
-        <button
-          type="button"
-          className="todo-item-description-cancel invisible"
-          onClick={() => this.props.handleCancel()}>
-          <i className="fa fa-times action reject"/>
-        </button>
+          <button
+            type="button"
+            className="todo-item-description-cancel invisible"
+            onClick={() => this.props.handleCancel()}>
+            <i className="fa fa-times action reject"/>
+          </button>
+        </div>
       </form>
     );
   }

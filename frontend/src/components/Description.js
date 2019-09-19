@@ -22,9 +22,10 @@ class Description extends Component {
         handleCancel={() => (this.setState({editing: !this.state.editing}))}/>;
     }
     return (
-      <form className="todo-item-description">
+      <form id='todo-item-description' className="row">
         <p
-          className="todo-item-description-text"
+          id="todo-item-description-text"
+          className='main-element'
           onClick={() => (
             this.setState({editing: true}))}>{description}</p>
         <button
