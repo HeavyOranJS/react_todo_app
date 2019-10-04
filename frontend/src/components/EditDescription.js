@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 import todos from '../actions';
 
@@ -14,12 +14,12 @@ class EditDescription extends Component {
   }
 
   editItem(index, oldItem) {
-    const {id, title, completed} = oldItem;
+    const { id, title, completed } = oldItem;
     const newItem = {
-      id: id,
-      title: title,
+      id,
+      title,
       description: this.state.description,
-      completed: completed,
+      completed,
     };
     this.props.editTodo(newItem, index);
     this.props.handleCancel();
@@ -34,7 +34,7 @@ class EditDescription extends Component {
           placeholder="item description"
           rows="4"
           cols="50"
-          onChange={(event) => this.setState({description: event.target.value})}
+          onChange={(event) => this.setState({ description: event.target.value })}
         />
 
         <div id='todo-item-description-wrapper' className='column'>
@@ -57,21 +57,14 @@ class EditDescription extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    todos: state.todos,
-  };
-};
+const mapStateToProps = (state) => ({
+  todos: state.todos,
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    editTodo: (index, item) => {
-      dispatch(todos.editTodo(index, item));
-    },
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  editTodo: (index, item) => {
+    dispatch(todos.editTodo(index, item));
+  },
+});
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps,
-)(EditDescription);
+export default connect(mapStateToProps, mapDispatchToProps)(EditDescription);

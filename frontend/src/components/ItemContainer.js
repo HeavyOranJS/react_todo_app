@@ -1,9 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-import Description from './Description';
+import DescriptionContainer from './DescriptionContainer';
 import EditItem from './EditItem';
 import Item from './Item';
-
 
 class ItemContainer extends Component {
   constructor(props) {
@@ -18,16 +17,14 @@ class ItemContainer extends Component {
   renderItem(editing) {
     if (editing) {
       return <EditItem
-        index={this.props.index}
-        item={this.props.item}
-        handleCancel={()=>this.setState({editing: false})}/>;
+        {...this.props}
+        handleCancel={() => this.setState({ editing: false })}/>;
     }
     return <Item
-      index={this.props.index}
-      item={this.props.item}
+      {...this.props}
       open={this.state.open}
-      handleEdit={()=>this.setState({editing: true})}
-      handleCollapse={() => this.setState({open: !this.state.open})}/>;
+      handleEdit={() => this.setState({ editing: true })}
+      handleCollapse={() => this.setState({ open: !this.state.open })}/>;
   }
 
   render() {
@@ -35,11 +32,9 @@ class ItemContainer extends Component {
       <li className='item'>
         {this.renderItem(this.state.editing)}
         {
-          this.state.open &&
-            <Description
-              index={this.props.index}
-              item={this.props.item}
-            />
+          this.state.open
+            && <DescriptionContainer
+              {...this.props}/>
         }
       </li>
     );

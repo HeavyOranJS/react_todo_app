@@ -1,6 +1,6 @@
 const initialState = [];
 
-export default function todos(state=initialState, action) {
+export default function todos(state = initialState, action) {
   const todoList = state.slice();
 
   switch (action.type) {
@@ -9,18 +9,10 @@ export default function todos(state=initialState, action) {
     case 'ADD_TODO':
       return [...state, action.todo];
     case 'EDIT_TODO':
-      const {title, description, completed} = action.todo;
-      const editedTodo = {
-        'id': todoList[action.index].id,
-        'title': title,
-        'description': description,
-        'completed': completed,
-      };
-      todoList.splice(action.index, 1, editedTodo);
-      return todoList;
+      // immutable todoList.splice(action.index, 1, action.todo);
+      return [...todoList.slice(0, action.index), action.todo, ...todoList.slice(action.index + 1)];
     case 'DELETE_TODO':
-      todoList.splice(action.index, 1);
-      return todoList;
+      return [...todoList.slice(0, action.index), ...todoList.slice(action.index)];
     default:
       return state;
   }

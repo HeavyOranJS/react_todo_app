@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 import todos from '../actions';
 
@@ -16,11 +16,13 @@ class Item extends Component {
   }
 
   toggleTodo() {
-    const {id, title, description, completed} = this.props.item;
+    const {
+      id, title, description, completed,
+    } = this.props.item;
     const toggledItem = {
-      id: id,
-      title: title,
-      description: description,
+      id,
+      title,
+      description,
       completed: !completed,
     };
 
@@ -28,7 +30,7 @@ class Item extends Component {
   }
 
   render() {
-    const {title, completed} = this.props.item;
+    const { title, completed } = this.props.item;
     return (
       <form id="todo-item-interface"
         className='row'>
@@ -50,27 +52,23 @@ class Item extends Component {
           className='invisible'
           onClick={() => (
             this.props.handleCollapse())}>
-          {this.props.open?
-            <i className="fa fa-chevron-up"/>:
-            <i className="fa fa-chevron-down"/>}
+          {this.props.open
+            ? <i className="fa fa-chevron-up"/>
+            : <i className="fa fa-chevron-down"/>}
         </button>
       </form>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    todos: state.todos,
-  };
-};
+const mapStateToProps = (state) => ({
+  todos: state.todos,
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    toggleTodo: (item, index) => {
-      dispatch(todos.editTodo(item, index));
-    },
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  toggleTodo: (item, index) => {
+    dispatch(todos.editTodo(item, index));
+  },
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Item);

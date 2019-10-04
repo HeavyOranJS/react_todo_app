@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import todos from '../actions';
 
@@ -15,12 +15,12 @@ class EditItem extends Component {
   }
 
   editItem(index, oldItem) {
-    const {id, description, completed} = oldItem;
+    const { id, description, completed } = oldItem;
     const newItem = {
-      'id': id,
-      'title': this.state.title,
-      'description': description,
-      'completed': completed,
+      id,
+      title: this.state.title,
+      description,
+      completed,
     };
     this.props.editTodo(newItem, index);
     this.props.handleCancel();
@@ -34,7 +34,7 @@ class EditItem extends Component {
         className='text-input main-element'
         value={this.state.title}
         placeholder='item name'
-        onChange={(event) => this.setState({title: event.target.value})}/>
+        onChange={(event) => this.setState({ title: event.target.value })}/>
 
       <button
         id='todo-item-edit-interface-accept'
@@ -56,18 +56,14 @@ class EditItem extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    todos: state.todos,
-  };
-};
+const mapStateToProps = (state) => ({
+  todos: state.todos,
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    editTodo: (index, item) => {
-      dispatch(todos.editTodo(index, item));
-    },
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  editTodo: (index, item) => {
+    dispatch(todos.editTodo(index, item));
+  },
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditItem);

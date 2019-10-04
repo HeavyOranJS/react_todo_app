@@ -5,6 +5,7 @@ body {
 
 p {
   margin: 0.5em auto;
+  overflow: hidden;
 }
 
 ul {
@@ -90,7 +91,8 @@ textarea {
 }
 
 #main-wrapper {
-  max-width: 33%;
+  min-width: 320px;
+  max-width: 550px;
   margin: 0 auto;
 }
 

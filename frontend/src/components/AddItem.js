@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 import todos from '../actions';
 
@@ -23,14 +23,14 @@ class AddItem extends Component {
 
   render() {
     return <form id='todo-item-add-interface'
-      className='item column'>
+        className='item column'>
       <div className='row'>
         <input
           id='todo-item-add-title'
           className='text-input main-element'
           type='text'
           placeholder='Item name'
-          onChange={(event) => this.setState({itemName: event.target.value})}/>
+          onChange={(event) => this.setState({ itemName: event.target.value })}/>
 
         <button
           type='button'
@@ -54,25 +54,20 @@ class AddItem extends Component {
         rows="4"
         cols="50"
         onChange={
-          (event) => this.setState({itemDescription: event.target.value})}/>
-
+          (event) => this.setState({ itemDescription: event.target.value })}/>
 
     </form>;
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    todos: state.todos,
-  };
-};
+const mapStateToProps = (state) => ({
+  todos: state.todos,
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addTodo: (name, description) => {
-      dispatch(todos.addTodo(name, description));
-    },
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  addTodo: (name, description) => {
+    dispatch(todos.addTodo(name, description));
+  },
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddItem);
